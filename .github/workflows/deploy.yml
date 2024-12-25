@@ -1,0 +1,41 @@
+
+name: NuGet deploy
+
+on:
+  release:
+    types: [ created ]
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+  
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+          source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --configuration Release --no-restore -p:PackageVersion=${{ github.event.release.tag_name }}
+
+      - name: Test
+        run: dotnet test --configuration Release --no-build --verbosity normal
+
+      - name: Create the package
+        run: dotnet pack --configuration Release --no-build -o nupkgs -p:PackageVersion=${{ github.event.release.tag_name }}
+
+      - name: Publish the package to GPR
+        run: dotnet nuget push nupkgs/*.nupkg
