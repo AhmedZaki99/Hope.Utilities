@@ -3,10 +3,10 @@
   <PropertyGroup>
 	<PackageId>Hope.Results</PackageId>
 	<PackageTags>netcore;fluent;result;results</PackageTags>
-	<PackageReleaseNotes>https://github.com/AhmedZaki99/Hope.Public.NuGet/releases</PackageReleaseNotes>
-	<PackageProjectUrl>https://github.com/AhmedZaki99/Hope.Public.NuGet</PackageProjectUrl>
+	<PackageReleaseNotes>https://github.com/AhmedZaki99/Hope.Utilities/releases</PackageReleaseNotes>
+	<PackageProjectUrl>https://github.com/AhmedZaki99/Hope.Utilities</PackageProjectUrl>
 	<RepositoryType>git</RepositoryType>
-	<RepositoryUrl>https://github.com/AhmedZaki99/Hope.Public.NuGet</RepositoryUrl>
+	<RepositoryUrl>https://github.com/AhmedZaki99/Hope.Utilities</RepositoryUrl>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
 
 	<Title>$(PackageId)</Title>
