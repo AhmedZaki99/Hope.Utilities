@@ -1,6 +1,6 @@
 # Hope.Utilities
 
-**Hope.Utilities** project provides a group of NuGet packages hosted on GitHub NuGet registry that contain common utility functionalites for .NET applications.
+**Hope.Utilities** project provides a group of NuGet packages hosted on GitHub NuGet registry that contain common utility functionalities for .NET applications.
 
 
 ## Build Status
