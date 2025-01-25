@@ -46,4 +46,28 @@ public static class ApplicationBuilderExtensions
         builder.Services.Configure<T>(configSection);
         return builder;
     }
+
+    /// <summary>
+    /// Configures options from the configuration section to the specified <see cref="IHostApplicationBuilder"/>'s <see cref="IServiceCollection"/>.
+    /// </summary>
+    /// <remarks>
+    /// This method also assigns the bound options model instance to the specified out parameter if the options were found.
+    /// </remarks>
+    /// <typeparam name="T">The options model type.</typeparam>
+    /// <param name="builder">The host application builder.</param>
+    /// <param name="optionsKey">The configuration section key.</param>
+    /// <param name="options">The options model instance.</param>
+    /// <returns>The host application builder to allow chaining.</returns>
+    public static IHostApplicationBuilder ConfigureOptionalOptions<T>(this IHostApplicationBuilder builder, string optionsKey, out T? options)
+        where T : class
+    {
+        var configSection = builder.Configuration.GetSection(optionsKey);
+        options = configSection.Get<T>();
+
+        if (options is not null)
+        {
+            builder.Services.Configure<T>(configSection);
+        }
+        return builder;
+    }
 }
